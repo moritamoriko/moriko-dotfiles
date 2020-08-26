@@ -1,0 +1,110 @@
+alias vi="vim"
+alias view="vim -R"
+alias diff=colordiff
+alias ls='ls -GF'
+alias la='ls -a'
+alias ll='ls -al'
+alias cdp='cd -P'
+alias tm="tmux -2 attach"
+alias tailf="tail -f"
+
+alias l='ls -CF'
+alias dir='ls -al'
+alias h='history'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias x='exit'
+
+# invoke prefered editor alias
+alias e="atom"
+
+# ディレクトリの履歴
+alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
+alias emacs='emacs -nw'
+
+# for mac
+alias fcd='source ~/bin/fcd.sh'
+alias here='open .'
+
+# Finder再起動
+alias ref='killall Finder'
+
+# for bundler
+alias be='bundle exec'
+alias bu='bundle update'
+alias bi='bundle install'
+
+alias clup="find -E . -regex '.*\/(#.*#|.*~)' -print0 |xargs -0 rm"
+
+# for rails
+
+alias rl='rails'
+alias rk='rake'
+alias rs='rails s'
+
+# for git
+
+alias g='git'
+alias co='checkout'
+alias st='status'
+alias ci='commit -a'
+alias di='diff'
+alias br='branch'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias gst='git status'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
+alias gd='git br -D'
+alias gurl='git config --get remote.origin.url'
+alias grh='git reset HEAD'
+alias gaa='git add --all'
+
+
+# for hub
+
+alias git='hub'
+alias h='hub'
+alias hb='hub browse'
+alias gb='git browse'
+if type compdef >/dev/null; then
+   compdef hub=git
+fi
+
+
+### functions
+function chpwd() { ls }
+
+# up command
+# http://gist.github.com/607290
+# http://d.hatena.ne.jp/hitode909/20101002/1285994430
+function up() {
+    to=$(perl -le '$p=$ENV{PWD}."/";$d="/".$ARGV[0]."/";$r=rindex($p,$d);$r>=0 && print substr($p, 0, $r+length($d))' $1)
+    if [ "$to" = "" ]; then
+        echo "no such file or directory: $1" 1>&2
+        return 1
+    fi
+    cd $to
+}
+
+# cdb
+function cdb() {
+  cd `ruby -e "require 'rubygems';gem 'bundler';require 'bundler';Bundler.load.specs.each{|s| puts s.full_gem_path if s.name == '${1}'}"`
+}
+
+
+# for mac applications
+alias ce='open -a /Applications/Emacs.app/Contents/MacOS/Emacs'
+
+# rbenv
+alias re='rbenv'
+alias rh='rehash'
+
+# Homebrew caskで古いバージョンのファイルを削除
+alias brew-cask-clean-outdated='for c in /opt/homebrew-cask/Caskroom/*; do vl=(`ls -t $c`) && for v in "${vl[@]:1}"; do rm -rf "$c/$v"; done; done'
+
+# Homebrew caskでinstallしてあるアプリのアップデート
+alias brew-cask-update='for c in `brew cask list`; do ! brew cask info $c | grep -qF "Not installed" || brew cask install $c; done'

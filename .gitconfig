@@ -1,0 +1,59 @@
+[user]
+	name = Akiko Kashiwabara
+	email = hato3000wa@gmail.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactvie = auto
+  grep = auto
+[status]
+  diff = auto
+[branch]
+    diff = auto
+[core]
+  editor = vim
+	excludesfile = /Users/kashiwabara/.gitignore_global
+	autoCRLF = false
+	precomposeunicode = true
+[push]
+	default = simple
+[tig "bind"]
+  generic = g move-first-line
+  generic = G move-last-line
+[alias]
+  co = checkout
+  cp = cherry-pick
+  st = status
+  ci = commit
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+  pr = pull --rebase
+  url = config --get remote.origin.url
+  b = browse
+  pr = pull-request
+  rmrf = !sh -c 'git branch -d $0 && git push origin :$0'
+	today = log --since=midnight --author='Akiko Kashiwabara' --oneline
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[browse-remote "github.com"]
+	top = https://{host}/{path}
+	ref = https://{host}/{path}/tree/{short_ref}
+	rev = https://{host}/{path}/commit/{commit}
+	file = "https://{host}/{path}/blob/{short_rev}/{file}{line && \"#L%d\" % line}"
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[commit]
+	template = /Users/kashiwabara/.stCommitMsg

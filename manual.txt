@@ -1,0 +1,34 @@
+<.zshrc>
+open ~/.
+.zshrc を .zshrc_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/.zshrc ~/
+
+<.gitconfig>
+open ~/.
+.gitconfig を .gitconfig_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/.gitconfig ~/
+
+<.gitignore>
+open ~/.
+.gitignore を .gitignore_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/.gitignore ~/
+
+<.aliases>
+open ~/.
+.aliases を .aliases_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/.aliases ~/
+
+<JapaneseInput>
+open ~/Library/Application\ Support/Google/JapaneseInput
+ディレクトリ JapaneseInput を JapaneseInput_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/JapaneseInput ~/Library/Application\ Support/Google/
+
+<.zsh(ディレクトリ)>
+open ~/.
+open ~/Dropbox/dotfiles/
+.zsh(ディレクトリ)を~/Dropbox/dotfiles/の中にコピペ
+.zsh(ディレクトリ) を .zsh_bu に名前を変える
+ln -s ~/Dropbox/dotfiles/.zsh ~/
+
+<zshからbashに戻す場合>
+chsh -s /bin/bash
