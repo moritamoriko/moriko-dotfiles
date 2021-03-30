@@ -1,0 +1,8 @@
+{
+    "editor.fontSize": 16,
+    "editor.fontFamily": "Robot, Monaco, 'Courier New', monospace",
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "window.openFilesInNewWindow": "on",
+    "window.zoomLevel": 0
+}
